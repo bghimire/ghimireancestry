@@ -2,8 +2,8 @@
 import { ref, onMounted } from 'vue'
 
 const selected = ref(null)
-const width = 1000
-const height = 700
+const width = 1100
+const height = 800
 const nodes = ref([])
 const links = ref([])
 
@@ -13,7 +13,7 @@ const data = {
     { name: 'Son 1', children: [
       { name: 'S1-G1' },
       { name: 'S1-G2' },
-      { name: 'S1-G3', children: [
+      { name: 'Gyanendra Ghimire', children: [
         { name: 'S1-G3-S1' },
         { name: 'S1-G3-S2', children: [
           { name: 'S1-G3-S2-D1' }
@@ -48,27 +48,27 @@ function build() {
       const siblings = data.children
       const idx = siblings.indexOf(node)
       const total = siblings.length
-      x = width / 2 + (idx - (total - 1) / 2) * 80
+      x = width / 2 + (idx - (total - 1) / 2) * 85
     } else if (depth === 2) {
       const siblings = parent.children
       const idx = siblings.indexOf(node)
       const total = siblings.length
-      x = parent.x + (idx - (total - 1) / 2) * 70
+      x = parent.x + (idx - (total - 1) / 2) * 80
     } else if (depth === 3) {
       const siblings = parent.children
       const idx = siblings.indexOf(node)
       const total = siblings.length
-      x = parent.x + (idx - (total - 1) / 2) * 60
+      x = parent.x + (idx - (total - 1) / 2) * 70
     } else if (depth === 4) {
       const siblings = parent.children
       const idx = siblings.indexOf(node)
       const total = siblings.length
-      x = parent.x + (idx - (total - 1) / 2) * 50
+      x = parent.x + (idx - (total - 1) / 2) * 60
     } else {
       x = parent.x
     }
-    const y = 80 + depth * 100
-    const n = { id: curId, name: node.name, short: node.name.length > 12 ? node.name.slice(0, 10) + '...' : node.name, children: node.children || [], parent, x, y, depth, highlighted: false }
+    const y = 90 + depth * 95
+    const n = { id: curId, name: node.name, short: node.name.length > 16 ? node.name.slice(0, 14) + '...' : node.name, children: node.children || [], parent, x, y, depth, highlighted: false }
     tempNodes.push(n)
     if (parent) {
       tempLinks.push({ source: parent, target: n, highlighted: false })
@@ -137,14 +137,14 @@ onMounted(() => {
           <circle
             :cx="node.x"
             :cy="node.y"
-            r="24"
+            r="22"
             :class="{ 'selected': selected === node, 'highlighted': node.highlighted }"
           />
           <text
             :x="node.x"
             :y="node.y + 4"
             text-anchor="middle"
-            font-size="9"
+            font-size="8"
             fill="#fff"
           >
             {{ node.short }}
@@ -159,7 +159,7 @@ onMounted(() => {
 .tree-container { overflow-x: auto; padding: 20px 0; }
 .tree-svg { border: 1px solid var(--vp-c-divider); border-radius: 8px; }
 .node-group circle { fill: #4a90e2; stroke: #2c5aa0; stroke-width: 2; transition: all 0.2s; }
-.node-group circle.selected { fill: #e24a4a; stroke: #a02c2c; r: 28; }
+.node-group circle.selected { fill: #e24a4a; stroke: #a02c2c; r: 26; }
 .node-group circle.highlighted { fill: #50c878; stroke: #2d8b57; filter: drop-shadow(0 0 4px rgba(80,200,120,0.6)); }
 .node-group text { pointer-events: none; user-select: none; }
 line { transition: all 0.2s; }
