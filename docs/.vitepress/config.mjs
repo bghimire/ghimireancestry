@@ -6,7 +6,8 @@ export default defineConfig({
   base: '/ghimireancestry/',
   themeConfig: {
     nav: [
-      { text: 'Home', link: '/' }
+      { text: 'Home', link: '/' },
+      { text: 'Ancestry', link: '/ancestry/' }
     ]
   }
 })
