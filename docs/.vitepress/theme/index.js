@@ -1,5 +1,5 @@
 import DefaultTheme from 'vitepress/theme'
-import FamilyTree from '../components/FamilyTree.vue'
+import FamilyTree from './components/FamilyTree.vue'
 import './custom.css'
 
 export default {
